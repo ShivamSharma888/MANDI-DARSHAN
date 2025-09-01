@@ -50,6 +50,11 @@ export default function Home() {
       <section id="contact">
         <ContactUs />
       </section>
+ <div>
+      
+      
+      {/* Rest of your home page content */}
+    </div>
     </div>
   );
 }

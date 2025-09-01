@@ -1,5 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './assets/fonts.css';
+import "./assets/fonts/fonts.css";
+
+
+
+
 // Layouts
 import PublicLayout from "./components/PublicLayout";
 import AdminLayout from "./admin/AdminLayout";
@@ -36,16 +40,18 @@ import ManagerDashboardCard from "./manager/components/ManagerDashboardCard";
 import UserDashboardCard from "./user/components/UserDashboardCard";
 
 // Admin pages
-import ManageUsers from './admin/pages/ManageUsers';
-import ManageTemples from './admin/pages/ManageTemples';
+import ManageUsers from "./admin/pages/ManageUsers";
+import ManageTemples from "./admin/pages/ManageTemples";
 import FeedbackDashboard from "./admin/pages/FeedbackDashboard";
+
 // Manager pages
-import ManageParking from './manager/pages/ManagerParking';
+import ManageParking from "./manager/pages/ManagerParking";
 
 // User pages
-import UserParking from './user/pages/UserParking';
+import UserParking from "./user/pages/UserParking";
 import FeedbackForm from "./components/Home/ContactUs";
 import UserTestimonial from "./user/pages/UserTestimonial";
+
 // Logout
 import Logout from "./components/Logout";
 
@@ -74,7 +80,7 @@ function App() {
           <Route path="/arts-crafts" element={<ArtsCrafts />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-      <Route path="faqs" element={<FAQ/>}/>
+          <Route path="/faqs" element={<FAQ />} />
         </Route>
 
         {/* Admin Routes */}
@@ -84,7 +90,7 @@ function App() {
           <Route path="register-manager" element={<AdminDashboardCards />} />
           <Route path="manage-users" element={<ManageUsers />} />
           <Route path="manage-temples" element={<ManageTemples />} />
-          <Route path="user-feedback" element={<FeedbackDashboard/>}/>
+          <Route path="user-feedback" element={<FeedbackDashboard />} />
         </Route>
 
         {/* Manager Routes */}
@@ -97,16 +103,26 @@ function App() {
         <Route path="/user" element={<UserLayout />}>
           <Route path="dashboard" element={<UserDashboardCard />} />
           <Route path="book-parking" element={<UserParking />} />
-          <Route path="user-feedback" element={<FeedbackForm/>}/>
-       <Route path="user-testimonial" element={<UserTestimonial/>}/>
+          <Route path="user-feedback" element={<FeedbackForm />} />
+          <Route path="user-testimonial" element={<UserTestimonial />} />
         </Route>
 
         {/* Top-level Logout */}
         <Route path="/logout" element={<Logout />} />
 
         {/* Optional: 404 */}
-        <Route path="*" element={<div className="text-center mt-28 text-gray-600 dark:text-gray-300">Page Not Found</div>} />
+        <Route
+          path="*"
+          element={
+            <div className="text-center mt-28 text-gray-600 dark:text-gray-300">
+              Page Not Found
+            </div>
+          }
+        />
+
+     
       </Routes>
+
     </Router>
   );
 }
