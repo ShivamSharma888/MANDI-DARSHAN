@@ -1,0 +1,10 @@
+/* src/assets/fonts.css */
+@font-face {
+  font-family: 'Soria';
+  src: url('./fonts/Soria-Regular.woff2') format('woff2'),
+       url('./fonts/Soria-Regular.woff') format('woff'),
+       url('./fonts/Soria-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

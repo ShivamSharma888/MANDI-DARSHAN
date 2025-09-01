@@ -1,0 +1,69 @@
+/* src/components/Navbar.css */
+
+/* Smooth menu slide animation */
+nav .transform {
+  transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Scrollbar Styling for menu */
+nav .overflow-y-auto::-webkit-scrollbar {
+  width: 8px;
+}
+nav .overflow-y-auto::-webkit-scrollbar-track {
+  background: #1f2937; /* gray-800 */
+  border-radius: 10px;
+}
+nav .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #facc15; /* yellow-400 */
+  border-radius: 10px;
+}
+nav .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #eab308; /* yellow-500 */
+}
+
+/* Logo hover effect */
+nav .logo-text {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+nav .logo-text:hover {
+  transform: scale(1.08);
+  color: #fde047; /* yellow-300 */
+}
+
+/* Menu Item hover underline effect */
+nav h2 a,
+nav h2 span {
+  position: relative;
+}
+nav h2 a::after,
+nav h2 span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #facc15; /* yellow-400 */
+  transition: width 0.3s ease-in-out;
+}
+nav h2 a:hover::after,
+nav h2 span:hover::after {
+  width: 100%;
+}
+
+/* Submenu description fade-in */
+nav li p {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+nav li:hover p {
+  opacity: 1 !important;
+  transform: translateX(5px);
+}
+
+/* Mobile hamburger smoother animation */
+nav button svg {
+  transition: transform 0.3s ease;
+}
+nav button:hover svg {
+  transform: rotate(90deg);
+}

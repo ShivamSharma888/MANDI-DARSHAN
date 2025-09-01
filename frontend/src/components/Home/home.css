@@ -1,0 +1,9 @@
+
+  .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+    position: relative;
+    top: 13px;
+}
+
+.swiper {
+    padding-bottom: 26px;
+}

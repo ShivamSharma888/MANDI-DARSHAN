@@ -1,0 +1,21 @@
+/* Slick slider CSS */
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
+  .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+    position: relative;
+    top: 13px;
+}
+
+.swiper {
+    padding-bottom: 26px;
+}
+body {
+  font-family:  'Soria', serif;
+}
+
+h1, h2, h3, .soria-heading {
+  font-family: 'Soria', serif;
+}
+
