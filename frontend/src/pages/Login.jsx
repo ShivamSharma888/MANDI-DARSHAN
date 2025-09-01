@@ -1,6 +1,6 @@
 // src/components/LoginBox.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";  // ✅ Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaUser, FaLock, FaParking, FaUserShield } from "react-icons/fa";
 
@@ -8,12 +8,15 @@ const LoginBox = () => {
   const [userType, setUserType] = useState("User");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();  // ✅ Initialize navigate hook
+  const navigate = useNavigate();
+
+  // Use Vite env variable if available, fallback to localhost
+  const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
+      const response = await fetch(`${apiBase}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -28,21 +31,17 @@ const LoginBox = () => {
         alert(data.message || "❌ Login failed");
         return;
       }
-const { user, token } = data; // backend sends user object and token
-user._id = user.id;
-localStorage.setItem("user", JSON.stringify(user)); // user must include _id
-localStorage.setItem("token", token);
-      alert(`✅ Welcome ${data.user.name}! Logged in as ${data.user.userType}`);
 
+      const { user, token } = data;
+      user._id = user.id;
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", token);
+      alert(`✅ Welcome ${user.name}! Logged in as ${user.userType}`);
 
-      // ✅ Use navigate for routing
-      if (data.user.userType === "Admin") {
-        navigate("/admin", { replace: true });
-      } else if (data.user.userType === "ParkingOwner") {
-        navigate("/manager", { replace: true });
-      } else {
-        navigate("/user", { replace: true });
-      }
+      // Navigate based on userType
+      if (user.userType === "Admin") navigate("/admin", { replace: true });
+      else if (user.userType === "ParkingOwner") navigate("/manager", { replace: true });
+      else navigate("/user", { replace: true });
     } catch (err) {
       console.error("Login error:", err);
       alert("⚠️ Server error. Please try again.");
@@ -63,7 +62,6 @@ localStorage.setItem("token", token);
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* User Type Selector */}
         <div className="flex justify-center gap-3 mb-8">
           {userTypes.map((type) => (
             <motion.button
@@ -85,7 +83,6 @@ localStorage.setItem("token", token);
           {userType} Login
         </h2>
 
-        {/* Login Form */}
         <form onSubmit={handleLogin} className="flex flex-col gap-5">
           <div className="relative">
             <FaUser className="absolute top-1/2 left-3 -translate-y-1/2 text-gray-300" />
